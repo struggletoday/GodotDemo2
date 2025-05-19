@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbeal5k1gea35"]
+
+[ext_resource type="Script" uid="uid://bxuxt6nivsbfu" path="res://Scripts/die_zone.gd" id="1_tyhfp"]
+[ext_resource type="AudioStream" uid="uid://dgju0lhc8jse0" path="res://assets/sounds/power_up.wav" id="2_oxqt5"]
+
+[node name="DieZone" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_tyhfp")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="DieSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_oxqt5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

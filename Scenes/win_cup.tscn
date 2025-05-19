@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnuohjycjgjif"]
+
+[ext_resource type="Script" uid="uid://bav74wb7etise" path="res://Scripts/win_cup.gd" id="1_22rh4"]
+[ext_resource type="Texture2D" uid="uid://crwwy80xlvw77" path="res://assets/sprites/cup.png" id="1_q6gem"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q6gem"]
+radius = 32.0
+
+[node name="WinCup" type="Area2D"]
+script = ExtResource("1_22rh4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(416, 352.029)
+scale = Vector2(0.032, 0.0293303)
+texture = ExtResource("1_q6gem")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(416, 352)
+shape = SubResource("CircleShape2D_q6gem")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
