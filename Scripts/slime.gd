@@ -1,5 +1,5 @@
 extends Node2D
-
+@onready var game_manager: Node = %GameManager
 @export var direction :int = 1
 const SPEED = 60
 @onready var ray_cast_left: RayCast2D = $RayCastLeft
@@ -17,6 +17,13 @@ func _process(delta: float) -> void:
 	else:
 		#翻转
 		animated_sprite_2d.flip_h = true
-	position.x += SPEED * delta * direction
-	
-	
+	if not game_manager.is_died:
+		position.x += SPEED * delta * direction
+
+
+func _on_hurt_box_area_entered(area: Area2D) -> void:
+	if area.name == "AttackBox":
+		if area.global_position.y < position.y:
+			print("enemy die1")
+			# 移除slime
+			queue_free()

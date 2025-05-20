@@ -1,19 +1,20 @@
 extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var game_manager: Node = %GameManager
 
 const SPEED = 250.0
 const JUMP_VELOCITY = -450.0
 var max_jumps = 2
-# 标记是否死亡
-var is_died = false
+
 # 当前可用跳跃次数
 var available_jumps = max_jumps
 
 func _physics_process(delta: float) -> void:
 	#玩家死亡
-	if is_died:
+	if game_manager.is_died:
 		velocity.x=0
 		velocity += get_gravity() * delta
+		animated_sprite_2d.flip_v=true
 		move_and_slide()
 		return
 	# 不在地面时的操作
@@ -47,3 +48,6 @@ func _physics_process(delta: float) -> void:
 		animated_sprite_2d.play("run")
 
 	move_and_slide()
+
+func test():
+	print("test")

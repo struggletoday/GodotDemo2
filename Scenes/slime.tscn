@@ -1,8 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://qjivq8o4gnbx"]
+[gd_scene load_steps=11 format=3 uid="uid://qjivq8o4gnbx"]
 
 [ext_resource type="Texture2D" uid="uid://cugpf1472nepg" path="res://assets/sprites/slime_green.png" id="1_jokqx"]
 [ext_resource type="Script" uid="uid://bsq5eefhhpg5b" path="res://Scripts/slime.gd" id="1_swwnm"]
 [ext_resource type="PackedScene" uid="uid://dbeal5k1gea35" path="res://Scenes/die_zone.tscn" id="3_aiwxb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_paq7w"]
+size = Vector2(16, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jokqx"]
 atlas = ExtResource("1_jokqx")
@@ -41,13 +44,22 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aiwxb"]
-size = Vector2(16, 22)
+size = Vector2(18, 20)
 
 [node name="Slime" type="Node2D"]
 script = ExtResource("1_swwnm")
 
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, 11)
+shape = SubResource("RectangleShape2D_paq7w")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+position = Vector2(0, -1)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_f4si1")
 autoplay = "default"
@@ -71,3 +83,5 @@ target_position = Vector2(15, 0)
 [node name="RayCastGround" type="RayCast2D" parent="."]
 position = Vector2(0, 18)
 target_position = Vector2(0, 11)
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

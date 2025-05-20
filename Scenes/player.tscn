@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ufvbw3rpp36e"]
+[gd_scene load_steps=18 format=3 uid="uid://ufvbw3rpp36e"]
 
 [ext_resource type="Script" uid="uid://tbiadiad0kkh" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://qoj2wv81mi8y" path="res://assets/sprites/knight.png" id="1_v0iea"]
@@ -109,8 +109,11 @@ animations = [{
 radius = 10.5
 height = 28.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
+size = Vector2(11.5, 0)
+
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(185, 153)
+position = Vector2(-3, -1)
 scale = Vector2(2, 2)
 collision_layer = 2
 collision_mask = 13
@@ -135,3 +138,11 @@ position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 editor_draw_drag_margin = true
+
+[node name="AttackBox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackBox"]
+position = Vector2(1.25, 13.5)
+shape = SubResource("RectangleShape2D_cvnsp")
