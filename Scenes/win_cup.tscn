@@ -7,6 +7,7 @@
 radius = 32.0
 
 [node name="WinCup" type="Area2D"]
+collision_mask = 2
 script = ExtResource("1_22rh4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
