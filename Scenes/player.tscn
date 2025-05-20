@@ -110,6 +110,7 @@ radius = 10.5
 height = 28.0
 
 [node name="Player" type="CharacterBody2D"]
+position = Vector2(185, 153)
 scale = Vector2(2, 2)
 collision_layer = 2
 collision_mask = 13
@@ -117,18 +118,18 @@ script = ExtResource("1_cvnsp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(138.5, 65.5)
+position = Vector2(1, -8)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_x3wgy")
 animation = &"run"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(139, 73)
+position = Vector2(1.5, -0.5)
 shape = SubResource("CapsuleShape2D_cvnsp")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(138.5, 72)
+position = Vector2(-0.5, 0.5)
 limit_right = 3294
 position_smoothing_enabled = true
 drag_horizontal_enabled = true

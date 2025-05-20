@@ -4,7 +4,8 @@ extends Node2D
 const SPEED = 60
 @onready var ray_cast_left: RayCast2D = $RayCastLeft
 @onready var ray_cast_right: RayCast2D = $RayCastRight
-@onready var ray_cast_ground: RayCast2D = $RayCastGround  # 新增地面检测射线
+# 新增地面检测射线
+@onready var ray_cast_ground: RayCast2D = $RayCastGround  
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 func _process(delta: float) -> void:

@@ -396,7 +396,7 @@ position = Vector2(176, 144)
 
 [node name="Player" parent="." instance=ExtResource("3_5a7ea")]
 z_index = 9
-position = Vector2(104, 296)
+position = Vector2(240, 352)
 scale = Vector2(1, 1)
 collision_mask = 5
 
