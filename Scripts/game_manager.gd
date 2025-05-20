@@ -4,12 +4,15 @@ extends Node
 @onready var tile_map_layer: TileMapLayer = $"../TileMapLayer"
 @onready var camera_2d: Camera2D = $"../Player/Camera2D"
 @onready var health_label: Label = $"../TopStatusBar/Panel/Health"
+@onready var kill_count: Label = $"../TopStatusBar/Panel/KillCount"
 
 var score :int = 0
 var health  = 100
 var reduce_health = 10
 # 标记是否死亡
 var is_died = false
+#击杀敌人数量
+var kill_enemy = 0
 
 func _ready() -> void:
 	coins_total.text = "Score:"+ str(score)
@@ -31,6 +34,10 @@ func _ready() -> void:
 func add_score() :
 	score += 1
 	coins_total.text = "Score:"+ str(score)
+	
+func add_kill_enemy() :
+	kill_enemy += 1
+	kill_count.text = "KillCount:"+ str(kill_enemy)
 
 #玩家生命值判定
 func edit_health()->bool:

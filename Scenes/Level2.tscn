@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://dqnehhupm5c32"]
+[gd_scene load_steps=32 format=4 uid="uid://dqnehhupm5c32"]
 
 [ext_resource type="Script" uid="uid://bkc7hkdvouu5h" path="res://Scripts/game_manager.gd" id="1_p4u3k"]
 [ext_resource type="Texture2D" uid="uid://c6gkluqxqp5lu" path="res://assets/Background.png" id="2_70df5"]
@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cbu7nqllr8o0y" path="res://Scenes/coin.tscn" id="7_ycmr1"]
 [ext_resource type="PackedScene" uid="uid://cnuohjycjgjif" path="res://Scenes/win_cup.tscn" id="8_2jwna"]
 [ext_resource type="PackedScene" uid="uid://ujg2kn6t8vph" path="res://Scenes/main_menu.tscn" id="9_70df5"]
-[ext_resource type="PackedScene" uid="uid://dbeal5k1gea35" path="res://Scenes/die_zone.tscn" id="10_ejprb"]
+[ext_resource type="PackedScene" uid="uid://blv5mps17kqeh" path="res://Scenes/trap_die.tscn" id="11_au75x"]
 
 [sub_resource type="Animation" id="Animation_fo5ed"]
 length = 0.001
@@ -406,9 +406,6 @@ texture = ExtResource("3_ejprb")
 [sub_resource type="TileSet" id="TileSet_fo5ed"]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_8j60k")
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_au75x"]
-distance = -80.0
 
 [node name="World" type="Node"]
 metadata/_edit_vertical_guides_ = [3294.0]
@@ -914,7 +911,27 @@ offset_right = 199.0
 offset_bottom = 53.0
 theme_override_fonts/font = ExtResource("6_au75x")
 theme_override_font_sizes/font_size = 20
-text = "SCORE:0"
+text = "Score:0"
+
+[node name="Health" type="Label" parent="TopStatusBar/Panel"]
+layout_mode = 0
+offset_left = 264.0
+offset_top = 8.0
+offset_right = 452.0
+offset_bottom = 50.0
+theme_override_fonts/font = ExtResource("6_au75x")
+theme_override_font_sizes/font_size = 20
+text = "Health:100"
+
+[node name="KillCount" type="Label" parent="TopStatusBar/Panel"]
+layout_mode = 0
+offset_left = 528.0
+offset_top = 8.0
+offset_right = 726.0
+offset_bottom = 50.0
+theme_override_fonts/font = ExtResource("6_au75x")
+theme_override_font_sizes/font_size = 20
+text = "KillCount:0"
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -932,8 +949,5 @@ scale = Vector2(1, 1)
 position = Vector2(1960, 200)
 target_level = ExtResource("9_70df5")
 
-[node name="DieZone" parent="." instance=ExtResource("10_ejprb")]
-position = Vector2(-88, 616)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DieZone"]
-shape = SubResource("WorldBoundaryShape2D_au75x")
+[node name="TrapDie" parent="." instance=ExtResource("11_au75x")]
+position = Vector2(-112, 616)
